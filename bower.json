@@ -1,0 +1,22 @@
+{
+  "name": "angularpractice",
+  "description": "just for practising Angular JS",
+  "main": "app.js",
+  "authors": [
+    "Ankit Keshari"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "hello",
+    "world"
+  ],
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
