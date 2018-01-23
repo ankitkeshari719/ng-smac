@@ -1,5 +1,6 @@
 angular.module('ngSmac',['ui.bootstrap']);
 
+/*
 var express = require('express');
 var app = express();
 //set post
@@ -14,4 +15,4 @@ app.get("/",function (req,res) {
 })
 app.listen(port,function () {
     console.log("app running");
-});
+});*/
