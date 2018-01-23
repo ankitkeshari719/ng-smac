@@ -1,20 +1,13 @@
 angular
     .module('ngSmac')
-    .controller('smacController',function ($scope) {
-        $scope.smac = {};
-        $scope.smac.hello = "Hello ng-smac!";
-        $scope.smac.data = [
-            {
-                'price':1,
-                'quantity':10
-            },
-            {
-                'price':2,
-                'quantity':20
-            },
-            {
-                'price':3,
-                'quantity':30
-            }
-        ];
+    .controller('smacController',function ($scope,smacFactory,smacService) {
+       $scope.smacFactoryData = smacFactory.getFactorySmacs();
+
+       smacService.getServiceSmacs().then(function (response) {
+            $scope.smacServiceData = response.data;
+        }, function(error) {
+            console.log(error.json)
+        });
+
+
     });

@@ -18,23 +18,59 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="app.js"></script>
     <script src="scripts/controllers/smacController.js"></script>
+    <script src="scripts/services/smacFactory.js"></script>
+    <script src="scripts/services/smacService.js"></script>
     <body ng-app="ngSmac" ng-controller="smacController">
-        <h1><center>{{smac.hello}}</center></h1>
-        <pre>{{smac.data | json}}</pre>
+        <h1><center>Using Factory</center></h1>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Project</th>
+                    <th>Practice</th>
+                </tr>
+                <tr ng-repeat="smac in smacFactoryData">
+                    <td><span>{{smac.name}}</span></td>
+                    <td><span>{{smac.project}}</span></td>
+                    <td><span>{{smac.practice}}</span></td>
+                </tr>
+            </table>
+        <hr/>
+        <hr/>
+        <h1><center>Using Http Service</center></h1>
         <table>
             <tr>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
+                <th>Name</th>
+                <th>Project</th>
+                <th>Practice</th>
             </tr>
-            <tr ng-repeat="data in smac.data">
-                <td><span>{{data.price}}</span></td>
-                <td><span>{{data.quantity}}</span></td>
-                <td><span>{{data.price * data.quantity}}</span></td>
+            <tr ng-repeat="smac in smacServiceData">
+                <td><span>{{smac.name}}</span></td>
+                <td><span>{{smac.project}}</span></td>
+                <td><span>{{smac.practice}}</span></td>
             </tr>
         </table>
-
-
+    </body>
     </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
