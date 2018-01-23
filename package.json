@@ -12,5 +12,19 @@
     "world"
   ],
   "author": "Ankit Keshari",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.7",
+    "angular-ui-bootstrap": "^2.5.6",
+    "bootstrap": "^4.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankitkeshari719/ng-smac.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ankitkeshari719/ng-smac/issues"
+  },
+  "homepage": "https://github.com/ankitkeshari719/ng-smac#readme"
 }
