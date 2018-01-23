@@ -1,3 +1,12 @@
+.body{
+    margin: 0px;
+    padding: 0px;
+}
+.form{
+    width: 100% !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
 .price-form {
     margin-bottom: 10px;
     padding: 15px;
@@ -14,4 +23,18 @@
 
 .listing-form h3 {
     color: white;
+}
+.navbarStyle{
+    margin-bottom: 0px !important;
+}
+.listing-json-data{
+    margin-top: 10px;
+    border: solid 1px;
+}
+.buttonAlignCenter{
+    text-align: center;
+    margin:0 auto;
+}
+.listStyle{
+    width: 100%;
 }
