@@ -12,44 +12,124 @@
         <meta charset="UTF-8">
         <title>ng-smac</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles/style.css">
     </head>
-    <body ng-app="ngSmac" ng-controller="smacController">
-        <h1><center>Using Factory</center></h1>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Project</th>
-                    <th>Practice</th>
-                </tr>
-                <tr ng-repeat="smac in smacFactoryData">
-                    <td><span>{{smac.name}}</span></td>
-                    <td><span>{{smac.project}}</span></td>
-                    <td><span>{{smac.practice}}</span></td>
-                </tr>
-            </table>
-        <hr/>
-        <hr/>
-        <h1><center>Using Http Service</center></h1>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Project</th>
-                <th>Practice</th>
-            </tr>
-            <tr ng-repeat="smac in smacServiceData">
-                <td><span>{{smac.name}}</span></td>
-                <td><span>{{smac.project}}</span></td>
-                <td><span>{{smac.practice}}</span></td>
-            </tr>
-        </table>
+    <body ng-app="ngSmac" ng-controller="RealEstateController">
+        <!--nav bar-->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Ng-Possible</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Page 1</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <!-- Min and Max Price Selection -->
+            <div class="col-sm-12 price-form">
+                <div class="row price-form-row" ng-if="!addListing">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">Min Price</span>
+                            <select name="minPrice" id="minPrice" ng-model="priceInfo.min" class="form-control">
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="500000">$500,000</option>
+                                <option value="600000">$600,000</option>
+                                <option value="700000">$700,000</option>
+                                <option value="800000">$800,000</option>
+                                <option value="900000">$900,000</option>
+                                <option value="1000000">$1,000,000</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">Max Price</span>
+                            <select name="maxPrice" id="maxPrice" ng-model="priceInfo.max" class="form-control">
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="500000">$500,000</option>
+                                <option value="600000">$600,000</option>
+                                <option value="700000">$700,000</option>
+                                <option value="800000">$800,000</option>
+                                <option value="900000">$900,000</option>
+                                <option value="1000000">$1,000,000</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Real Estate Listings -->
+        <div class="container">
+            <div class="col-sm-4"
+                 ng-repeat="crib in cribs | realStateFilter:priceInfo">
+                <div class="thumbnail">
+                    <img ng-src="images/{{crib.image}}.jpg" alt="">
+                    <div class="caption">
+                        <div ng-hide="showDetails === true">
+                            <h3><i class="glyphicon glyphicon-tag"></i> {{crib.price | currency}}</h3>
+                            <h4><i class="glyphicon glyphicon-home"></i> {{crib.address}}
+                                <span class="label label-primary label-sm">{{crib.type}}</span>
+                            </h4>
+
+                        </div>
+
+                        <button class="btn btn-xs btn-success"
+                                ng-hide="showDetails === true"
+                                ng-click="showDetails = !showDetails">
+                            Details
+                        </button>
+
+                        <button
+                                class="btn btn-xs btn-primary"
+                                ng-show="showDetails"
+                                ng-click="editCrib(crib)">Edit
+                        </button>
+
+                        <button class="btn btn-xs btn-danger"
+                                ng-show="showDetails === true"
+                                ng-click="showDetails = !showDetails">
+                            Close
+                        </button>
+
+                        <div class="details" ng-show="showDetails === true">
+                            <h4>
+                                <span class="label label-primary">Beds: {{crib.details.bedrooms}}</span>
+                                <span class="label label-primary">Baths: {{crib.details.bathrooms}}</span>
+                                <span class="label label-primary">SqFt: {{crib.details.area}}</span>
+                            </h4>
+                            <p>{{crib.description}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="app.js"></script>
     <script src="scripts/controllers/smacController.js"></script>
+    <script src="scripts/controllers/RealEstateController.js"></script>
     <script src="scripts/services/smacFactory.js"></script>
     <script src="scripts/services/smacService.js"></script>
+    <script src="scripts/services/RealEstateService.js"></script>
+    <script src="scripts/filter/RealStateFilter.js"></script>
 
 </html>
 
